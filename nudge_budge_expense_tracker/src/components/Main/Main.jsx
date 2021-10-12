@@ -26,7 +26,7 @@ const Main = () => {
                 </Grid>
             </CardContent>
         </Card>
-    )
+    );
 }
 
 export default Main
