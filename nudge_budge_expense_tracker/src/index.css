@@ -4,6 +4,6 @@
 }
 
 body{
-    background-image: url(./assets/currency.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(./assets/currency.jpg);
     background-size: cover;
 }
