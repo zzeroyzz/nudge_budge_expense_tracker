@@ -4,5 +4,6 @@
 }
 
 body{
-    
+    background-image: url(./assets/currency.jpg);
+    background-size: cover;
 }
