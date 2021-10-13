@@ -6,25 +6,29 @@ import useStyles from './styles';
 
 const List = () => {
     const classes = useStyles();
+  
 
     const transaction = [
-        {id: 1, 
-        type:'Income',
-        category:'Salary',
-        amount:'$0',
-        date:'Wed Oct 13 2021'
+        {
+            id: 1, 
+            type:'Income',
+            category:'Salary',
+            amount:'$0',
+            date:'Wed Oct 13 2021'
         },
-        {id: 2, 
-        type:'Expense',
-        category:'Pets',
-        amount:'$70',
-        date:'Wed Oct 14 2021'
+        {
+            id: 2, 
+            type:'Expense',
+            category:'Pets',
+            amount:'$70',
+            date:'Wed Oct 14 2021'
         },
-        {id: 3, 
-        type:'Expense',
-        category:'Car',
-        amount:'$500',
-        date:'Wed Oct 15 2021'
+        {
+            id: 3, 
+            type:'Expense',
+            category:'Car',
+            amount:'$500',
+            date:'Wed Oct 15 2021'
         }
         
     ]
