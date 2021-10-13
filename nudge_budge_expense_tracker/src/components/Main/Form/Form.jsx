@@ -27,8 +27,8 @@ const Form = () => {
             <FormControl fullWidth>
                 <InputLabel> Category </InputLabel>
                 <Select>
-                    <MenuItem value="business">Business \</MenuItem>
-                    <MenuItem value="business">Business \</MenuItem>
+                    <MenuItem value="business">Business </MenuItem>
+                    <MenuItem value="salary">Salary</MenuItem>
                 </Select>
             </FormControl>
         </Grid>
