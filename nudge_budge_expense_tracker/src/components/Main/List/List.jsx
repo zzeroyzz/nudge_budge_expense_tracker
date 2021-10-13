@@ -12,7 +12,20 @@ const List = () => {
         type:'Income',
         category:'Salary',
         amount:'$0',
-        date: new Date()}
+        date:'Wed Oct 13 2021'
+        },
+        {id: 2, 
+        type:'Expense',
+        category:'Pets',
+        amount:'$70',
+        date:'Wed Oct 14 2021'
+        },
+        {id: 3, 
+        type:'Expense',
+        category:'Car',
+        amount:'$500',
+        date:'Wed Oct 15 2021'
+        }
         
     ]
     return (
@@ -21,7 +34,7 @@ const List = () => {
                 <Slide direction="down" in mountonEnter unmountOnExit key={transaction.id}>
                     <ListItem>
                         <ListItemAvatar>
-                            <Avatar className={transaction.type === ' Income' ? classes.avatarIncome : classes.avatarExpense}>
+                            <Avatar className={transaction.type === 'Income' ? classes.avatarIncome : classes.avatarExpense}>
                                 <MoneyOff />
                             </Avatar>
                         </ListItemAvatar>
