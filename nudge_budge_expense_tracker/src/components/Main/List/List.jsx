@@ -1,5 +1,5 @@
 import React from 'react'
-import {List as MUIList, ListItem, ListItemAvatar, ListItemText, Avatar, listItemSecondaryAction, IconButton, Slide} from '@material-ui/core';
+import {List as MUIList, ListItem, ListItemAvatar, ListItemText, Avatar, ListItemSecondaryAction, IconButton, Slide} from '@material-ui/core';
 import {Delete, MoneyOff} from '@material-ui/icons';
 
 import useStyles from './styles';
@@ -7,21 +7,21 @@ import useStyles from './styles';
 const List = () => {
     const classes = useStyles();
 
-    const transcation = {
+    const transaction = [
         {id: 1, 
         type:'Income',
         category:'Salary',
-        amount:$0,
-        date: new Date()
-        }
-    }
+        amount:'$0',
+        date: new Date()}
+        
+    ]
     return (
         <MUIList dense={false} className = {classes.list}>
-            {transactions.map((transaction) =>{
+            {transaction.map((transaction) =>(
                 <Slide direction="down" in mountonEnter unmountOnExit key={transaction.id}>
                     <ListItem>
                         <ListItemAvatar>
-                            <Avatar className={transaction.type == ' Income' ? classes.avatarIncome : classes.avatarExpense}>
+                            <Avatar className={transaction.type === ' Income' ? classes.avatarIncome : classes.avatarExpense}>
                                 <MoneyOff />
                             </Avatar>
                         </ListItemAvatar>
@@ -33,7 +33,7 @@ const List = () => {
                         </ListItemSecondaryAction>
                     </ListItem>
                 </Slide>
-            })}
+            ))}
             
         </MUIList>
     )
