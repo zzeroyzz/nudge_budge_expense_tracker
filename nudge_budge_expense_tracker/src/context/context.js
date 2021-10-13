@@ -5,7 +5,8 @@ const initialState = [];
 
 export const NudgeBudgeExpenseTrackerContext = createContext(initialState);
 
-export const provider = ({children}) =>{
+export const Provider = ({children}) =>{
+    const [state, dispatch] = useReducer(reducer, initialState, init);
     return(
         <NudgeBudgeExpenseTrackerContext.Provider value={{appName:'Nudge Budge Expense Tracker'}}>
             {children}
