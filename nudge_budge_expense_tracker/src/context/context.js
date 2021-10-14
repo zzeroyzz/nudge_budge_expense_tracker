@@ -7,7 +7,7 @@ const initialState = [];
 export const NudgeBudgeExpenseTrackerContext = createContext(initialState);
 
 export const Provider = ({children}) =>{
-    const [transaction, dispatch] = useReducer(contextReducer, initialState, init);
+    const [transaction, dispatch] = useReducer(contextReducer, initialState);
     
     //Action Creators
     const deleteTransaction = (id) =>{
