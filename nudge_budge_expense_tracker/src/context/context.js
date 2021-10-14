@@ -1,14 +1,27 @@
 import React, {useReducer, createContext } from 'react';
 
+import contextReducer from './contextReducer'
 
 const initialState = [];
 
 export const NudgeBudgeExpenseTrackerContext = createContext(initialState);
 
 export const Provider = ({children}) =>{
-    const [state, dispatch] = useReducer(reducer, initialState, init);
+    const [transaction, dispatch] = useReducer(contextReducer, initialState, init);
+    
+    //Action Creators
+    const deleteTransaction = (id) =>{
+        dispatch({type: 'DELETE_TRANSACTION', payload: id});
+    }
+    const addTransaction = (transaction) =>{
+        dispatch({type: 'ADD_TRANSACTION', payload: transaction});
+    }
+    
     return(
-        <NudgeBudgeExpenseTrackerContext.Provider value={{appName:'Nudge Budge Expense Tracker'}}>
+        <NudgeBudgeExpenseTrackerContext.Provider value={{
+            deleteTransaction,
+            addTransaction
+        }}>
             {children}
         </NudgeBudgeExpenseTrackerContext.Provider>
     )
