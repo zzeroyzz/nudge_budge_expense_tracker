@@ -16,6 +16,7 @@ export const Provider = ({children}) =>{
     const addTransaction = (transaction) =>{
         dispatch({type: 'ADD_TRANSACTION', payload: transaction});
     }
+    console.log(transaction, "Transaction added!")
     
     return(
         <NudgeBudgeExpenseTrackerContext.Provider value={{
