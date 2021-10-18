@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import {TextField, Typography, Grid, Button, FormControl, InputLabel, Select, MenuItem} from '@material-ui/core'
 import {NudgeBudgeExpenseTrackerContext} from '../../../context/context'
 import useStyles from './styles'
@@ -24,6 +24,23 @@ const Form = () => {
         addTransaction(transaction)
         setFormData(initialState)
     }
+    useEffect(() =>{
+        if(segment){
+            if(segment.intent.intent === 'add_expense'){
+                setFormData({...formData, type:'Expense'})
+            }else if(segment.intent.intent === 'add_income'){
+                setFormData({...formData, type:'Income'})
+            }else if(segment.isFinal && segment.intent.intent === 'create_transaction'){
+                return createTransaction();
+            }else if(segment.isFinal && segment.intent.intent ==='cancel_transaction'){
+                return setFormData(initialState);
+            }
+
+            segment.entities.forEach((e) =>{
+                console.log(e.value)
+            })
+        }
+    },[segment])
 
     const selectedCategories = formData.type === 'Income' ? incomeCategories : expenseCategories;
     
@@ -31,11 +48,8 @@ const Form = () => {
         <Grid container spacing={2}>
            <Grid item xs={12}>
             <Typography align="center" variant="subtitle2" gutterBottom>
-                {segment && (
-                    <>
-                    {segment.words.map((w) => w.value).join(" ")}
-                    </>
-                ) }
+               { segment && segment.words.map((w) => w.value).join(" ")}
+                    
             </Typography>
             </Grid>
             <Grid item xs={6}>
