@@ -1,12 +1,13 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {Card, CardHeader, CardContent, Typography, Grid, Divider} from '@material-ui/core'
 
+import {NudgeBudgeExpenseTrackerContext} from '../../context/context'
 import useStyles from './styles'
 import Form from "./Form/Form"
 import List from "./List/List"
 const Main = () => {
     const classes = useStyles();
-
+    const {balance} = useContext(NudgeBudgeExpenseTrackerContext);
     return (
         <Card className={classes.root}>
             <CardHeader title="Nudge Budge Expense Tracker" subheader="Powered by Speechly" />
