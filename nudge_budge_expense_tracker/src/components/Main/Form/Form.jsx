@@ -6,7 +6,7 @@ import {v4 as uuidv4} from 'uuid'
 import {incomeCategories, expenseCategories} from '../../../constants/categories'
 import formatDate from '../../../utils/formatDate'
 import {useSpeechContext} from '@speechly/react-client'
-import {CustomSnackbar} from '../../SnackBar/Snackbar'
+import CustomSnackbar from '../../SnackBar/Snackbar'
 const initialState = {
   amount: '',
   category: '',
@@ -19,7 +19,7 @@ const Form = () => {
     const [formData, setFormData] = useState(initialState)
     const {addTransaction} = useContext(NudgeBudgeExpenseTrackerContext)
     const {segment} = useSpeechContext()
-    const {open, setOpen} = useState(false)
+    const [open, setOpen] = useState(false)
     
     const createTransaction = () =>{
         if(Number.isNaN(Number(formData.amount)) || !formData.date.includes('-')) return;
