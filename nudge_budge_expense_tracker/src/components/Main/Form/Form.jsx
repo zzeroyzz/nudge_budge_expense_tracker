@@ -75,7 +75,7 @@ const Form = () => {
            <Grid item xs={12}>
             <Typography align="center" variant="subtitle2" gutterBottom>
                { segment && segment.words.map((w) => w.value).join(" ")}
-                    
+                 
             </Typography>
             </Grid>
             <Grid item xs={6}>
