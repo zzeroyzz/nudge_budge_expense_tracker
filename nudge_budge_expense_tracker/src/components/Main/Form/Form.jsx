@@ -20,6 +20,7 @@ const Form = () => {
     const {addTransaction} = useContext(NudgeBudgeExpenseTrackerContext)
     const {segment} = useSpeechContext()
     const createTransaction = () =>{
+        if(Number.isNaN(Number(formData.amount)) || !formData.date.includes('-')) return;
         const transaction = { ...formData, amount:Number(formData.amount), id:uuidv4()}
         addTransaction(transaction)
         setFormData(initialState)
@@ -37,8 +38,29 @@ const Form = () => {
             }
 
             segment.entities.forEach((e) =>{
-                console.log(e.value)
+                const category = `${e.value.charAt(0)}${e.value.slice(1).toLowerCase()}`
+                switch (e.type) {
+                    case 'amount':
+                        setFormData({...formData, amount:e.value});
+                        
+                        break;
+                    case 'category':
+                        if(incomeCategories.map((i) => i.type).includes(category)){
+                        setFormData({...formData, type:'Income',category})
+                        }else if(expenseCategories.map((i) => i.type).includes(category)){
+                        setFormData({...formData, type:'Expense',category})
+                        }
+                    break;
+                    case 'date':
+                        setFormData({...formData, date:e.value})
+                        break;
+                    default:
+                        break;
+                }
             })
+                if(segment.isFinal && formData.amount && formData.category &&formData.type &&formData.date){
+                    createTransaction()
+                }
         }
     },[segment])
 
